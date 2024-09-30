@@ -1,0 +1,22 @@
+const { exec } = require('child_process');
+
+// Function to launch Minecraft 1.16
+function launchMinecraft() {
+    const minecraftPath = '"C:\\Program Files (x86)\\Minecraft Launcher\\MinecraftLauncher.exe"'; // Adjust the path as necessary
+    const version = '1.16';
+
+    exec(`${minecraftPath} --workDir "C:\\Users\\YourUsername\\AppData\\Roaming\\.minecraft" --version ${version}`, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error launching Minecraft: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.error(`Error: ${stderr}`);
+            return;
+        }
+        console.log(`Minecraft launched successfully: ${stdout}`);
+    });
+}
+
+// Call the function to launch the game
+launchMinecraft();
